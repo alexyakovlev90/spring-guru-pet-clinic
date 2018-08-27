@@ -1,2 +1,2 @@
 # spring-guru-pet-clinic
-Spring Boot study at Spring Boot Guru course https://www.udemy.com/draft/1217894
+Spring Boot study at Spring Boot Guru course https://www.udemy.com/spring-framework-5-beginner-to-guru/
