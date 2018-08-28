@@ -2,7 +2,6 @@ package guru.springframework.petclinic.bootstrap;
 
 import guru.springframework.petclinic.model.*;
 import guru.springframework.petclinic.service.*;
-import guru.springframework.petclinic.service.map.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,20 +11,18 @@ import java.time.LocalDate;
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
-    private final PetService petService;
     private final PetTypeService petTypeService;
     private final VetService vetService;
     private final SpecialityService specialityService;
     private final VisitService visitService;
 
-    public DataLoader() {
-        petService = new PetMapService();
-        petTypeService = new PetTypeMapService();
-
-        ownerService = new OwnerMapService(petTypeService, petService);
-        vetService = new VetMapService();
-        specialityService = new SpecialityMapService();
-        visitService = new VisitMapService();
+    public DataLoader(OwnerService ownerService, PetTypeService petTypeService, VetService vetService,
+                      SpecialityService specialityService, VisitService visitService) {
+        this.ownerService = ownerService;
+        this.petTypeService = petTypeService;
+        this.vetService = vetService;
+        this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override

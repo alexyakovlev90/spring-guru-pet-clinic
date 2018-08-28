@@ -2,12 +2,11 @@ package guru.springframework.petclinic.service.map;
 
 import guru.springframework.petclinic.model.Visit;
 import guru.springframework.petclinic.service.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-/**
- * Created by Alexander Yakovlev on 28.08.2018.
- */
+@Service
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Set<Visit> findAll() {
