@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/vet")
 @Controller
 public class VetController {
 
@@ -15,11 +14,14 @@ public class VetController {
         this.vetService = vetService;
     }
 
-    @RequestMapping("/all")
+    @RequestMapping({"/vets/all", "vets", "vets.html"})
     public String listVets(Model model) {
         model.addAttribute("vets", vetService.findAll());
-
-
         return "vet/vet";
+    }
+
+    @RequestMapping("find")
+    public String findVets() {
+        return "not_implemented";
     }
 }

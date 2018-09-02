@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/owner")
+@RequestMapping("/owners")
 @Controller
 public class OwnerController {
 
@@ -20,5 +20,10 @@ public class OwnerController {
         model.addAttribute("owners", ownerService.findAll());
 
         return "owner/owner";
+    }
+
+    @RequestMapping("find")
+    public String findOwners() {
+        return "not_implemented";
     }
 }
