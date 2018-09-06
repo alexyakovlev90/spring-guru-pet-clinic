@@ -1,18 +1,25 @@
 package guru.springframework.petclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+public class Pet extends BaseEntity {
 
-public class Pet extends BaseEntity{
-
+    @Column(name = "NAME")
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "TYPE_ID")
     private PetType petType;
 
+    @ManyToOne
+    @JoinColumn(name = "OWNER_ID", nullable = false, insertable = false, updatable = false)
     private Owner owner;
 
+    @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
     private Set<Visit> vists = new HashSet<>();

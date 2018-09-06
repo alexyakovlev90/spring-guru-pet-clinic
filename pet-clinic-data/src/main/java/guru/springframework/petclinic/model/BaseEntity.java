@@ -1,10 +1,14 @@
 package guru.springframework.petclinic.model;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 
+@MappedSuperclass
 public class BaseEntity implements Serializable {
 
+    @Id
     private Long id;
 
     public Long getId() {
