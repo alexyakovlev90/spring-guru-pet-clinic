@@ -4,6 +4,7 @@ import guru.springframework.petclinic.model.*;
 import guru.springframework.petclinic.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -48,7 +49,6 @@ public class DataLoader implements CommandLineRunner {
         Speciality savedDentistry = specialityService.save(dentistry);
 
         Owner owner1 = new Owner();
-        owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
         owner1.setAddress("123 Brickerel");
@@ -62,10 +62,9 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Rosco");
         owner1.getPets().add(mikesPet);
 
-        ownerService.save(owner1);
+        owner1 = ownerService.save(owner1);
 
         Owner owner2 = new Owner();
-        owner2.setId(2L);
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
         owner2.setAddress("123 Brickerel");
@@ -79,10 +78,10 @@ public class DataLoader implements CommandLineRunner {
         fionasCat.setPetType(savedCatPetType);
         owner2.getPets().add(fionasCat);
 
-        ownerService.save(owner2);
+        owner2 = ownerService.save(owner2);
 
         Visit catVisit = new Visit();
-        catVisit.setPet(fionasCat);
+        catVisit.setPet(owner2.getPets().iterator().next());
         catVisit.setDate(LocalDate.now());
         catVisit.setDescription("Sneezy Kitty");
 

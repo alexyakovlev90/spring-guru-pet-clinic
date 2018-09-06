@@ -16,7 +16,7 @@ public class Pet extends BaseEntity {
     private PetType petType;
 
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "OWNER_ID", updatable = false, insertable = false)
     private Owner owner;
 
     @Column(name = "BIRTH_DATE")
